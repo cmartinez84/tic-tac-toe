@@ -36,15 +36,25 @@ $(function(){
     var input = $(this).val();
     var index = $(this).attr('id');
     board.play(index, input);
-  })
+  });
 
 
+
+  $("#playerNameInput").submit(function(event){
+    event.preventDefault();
+    var player1 = new Player(($("#player1input").val()), "X");
+    var player2 = new Player(($("#player2input").val()), "O");
+    console.log(player1);
+    playerTurn(player1, player2);
+  });
+  var playerTurn = function(playerArg1, playerArg2){
+    $(".squares").focus(function(){
+      $(this).val(playerArg1.letter);
+      playerTurn(playerArg2, playerArg1);
+    });
+  }
+
+
+  $
 
 });
-
-
-
-
-newPerson1 = new Player("joe", "x");
-newPerson2 = new Player("shmoe", "o");
-console.log(newPerson2, newPerson1)

@@ -1,6 +1,10 @@
 function Square (value){
   this.value = value;
-  this.letter = "";
+  this.letter = value;
+}
+function Player(playerName, letter){
+  this.playerName = playerName;
+  this.letter = letter;
 }
 var board = {
   tiles: [],
@@ -14,19 +18,17 @@ var board = {
     ((this.tiles[2].letter===this.tiles[5].letter) && (this.tiles[5].letter === this.tiles[8].letter)) ||
     ((this.tiles[0].letter===this.tiles[4].letter) && (this.tiles[4].letter === this.tiles[8].letter)) ||
     ((this.tiles[2].letter===this.tiles[4].letter) && (this.tiles[4].letter === this.tiles[6].letter)))
-
       {
-      alert("I wanna know");
+      alert("You Won!");
       }
     }
 }
 
-
-
-function Player(playerName, letter){
-  this.playerName = playerName;
-  this.letter = letter;
-}
+$(function(){
+  for(var i = 0; i <board.tiles.length; i++){
+    $("#playingBoard").append('<input type="text" name="name" id="'+ board.tiles[i].letter +'">');
+  }
+});
 
 
 

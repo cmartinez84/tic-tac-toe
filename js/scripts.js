@@ -36,6 +36,7 @@ $(function(){
     var input = $(this).val();
     var index = $(this).attr('id');
     board.play(index, input);
+    $(this).prop('disabled', true);
   });
 
 

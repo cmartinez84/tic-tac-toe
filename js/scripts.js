@@ -23,19 +23,28 @@ var board = {
       }
     }
 }
-
-$(function(){
-  for(var i = 0; i <board.tiles.length; i++){
-    $("#playingBoard").append('<input type="text" name="name" id="'+ board.tiles[i].letter +'">');
-  }
-});
-
-
-
 for (var i = 0; i<=8; i++){
   var newSquare = new Square (i);
   board.tiles.push(newSquare);
 }
+
+$(function(){
+  for(var i = 0; i <board.tiles.length; i++){
+    $("#playingBoard").append('<input class="squares" type="text" name="name" id="'+ board.tiles[i].letter +'">');
+  }
+  $(".squares").focusout(function(){
+    var input = $(this).val();
+    var index = $(this).attr('id');
+    board.play(index, input);
+  })
+
+
+
+});
+
+
+
+
 newPerson1 = new Player("joe", "x");
 newPerson2 = new Player("shmoe", "o");
 console.log(newPerson2, newPerson1)

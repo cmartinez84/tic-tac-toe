@@ -14,3 +14,9 @@ input{
   width: 100%;
   min-width: 900px !important;
 }
+.pointer{
+  cursor: pointer;
+}
+.not-allowed{
+  cursor: not-allowed;
+}

@@ -21,6 +21,18 @@ var board = {
       {
       alert("You Won!");
       }
+    if(((this.tiles[0].letter!==this.tiles[1].letter) && (this.tiles[1].letter !== this.tiles[2].letter)) &&
+    ((this.tiles[3].letter!==this.tiles[4].letter) && (this.tiles[4].letter !== this.tiles[5].letter)) &&
+    ((this.tiles[6].letter!==this.tiles[7].letter) && (this.tiles[7].letter !== this.tiles[8].letter)) &&
+    ((this.tiles[0].letter!==this.tiles[3].letter) && (this.tiles[3].letter !== this.tiles[6].letter)) &&
+    ((this.tiles[1].letter!==this.tiles[4].letter) && (this.tiles[4].letter !== this.tiles[7].letter)) &&
+    ((this.tiles[2].letter!==this.tiles[5].letter) && (this.tiles[5].letter !== this.tiles[8].letter)) &&
+    ((this.tiles[0].letter!==this.tiles[4].letter) && (this.tiles[4].letter !== this.tiles[8].letter)) &&
+    ((this.tiles[2].letter!==this.tiles[4].letter) && (this.tiles[4].letter !== this.tiles[6].letter))&&
+    (isNaN(this.tiles[0].letter)) &&(isNaN(this.tiles[3].letter)) &&(isNaN(this.tiles[6].letter)) &&(isNaN(this.tiles[8].letter)) &&(isNaN(this.tiles[4].letter)))
+      {
+      alert("Hurray, You Tied!");
+      }
     }
 }
 for (var i = 0; i<=8; i++){
@@ -29,22 +41,22 @@ for (var i = 0; i<=8; i++){
 }
 
 $(function(){
-
   for(var i = 0; i <board.tiles.length; i++){
     $("#playingBoard").append('<input class="squares" type="text" name="name" id="'+ board.tiles[i].letter +'">');
   }
-    $(".squares").prop('disabled', true);
-
+  $(".squares").prop('disabled', true);
   $(".squares").focusout(function(){
     var input = $(this).val();
     var index = $(this).attr('id');
     board.play(index, input);
     $(this).prop('disabled', true);
+    $(this).addClass("not-allowed");
   });
 
   $("#playerNameInput").submit(function(event){
     event.preventDefault();
-    $("input").prop('disabled', false);
+    $(".squares").prop('disabled', false);
+    $(".squares").addClass("pointer");
     var player1 = new Player(($("#player1input").val()), "X");
     var player2 = new Player(($("#player2input").val()), "O");
     console.log(player1);

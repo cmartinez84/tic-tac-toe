@@ -29,9 +29,12 @@ for (var i = 0; i<=8; i++){
 }
 
 $(function(){
+
   for(var i = 0; i <board.tiles.length; i++){
     $("#playingBoard").append('<input class="squares" type="text" name="name" id="'+ board.tiles[i].letter +'">');
   }
+    $(".squares").prop('disabled', true);
+
   $(".squares").focusout(function(){
     var input = $(this).val();
     var index = $(this).attr('id');
@@ -39,10 +42,9 @@ $(function(){
     $(this).prop('disabled', true);
   });
 
-
-
   $("#playerNameInput").submit(function(event){
     event.preventDefault();
+    $("input").prop('disabled', false);
     var player1 = new Player(($("#player1input").val()), "X");
     var player2 = new Player(($("#player2input").val()), "O");
     console.log(player1);
